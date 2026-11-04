@@ -1,0 +1,63 @@
+source,split,field,rows,null_count,empty_string_count,missing_fraction
+qa,train,id,45328,0,0,0.0
+qa,train,title,45328,0,0,0.0
+qa,train,context,45328,0,0,0.0
+qa,train,question,45328,0,0,0.0
+qa,train,answers,45328,0,0,0.0
+qa,train,split,45328,0,0,0.0
+qa,train,source_row,45328,0,0,0.0
+qa,train,row_key,45328,0,0,0.0
+qa,validation,id,5036,0,0,0.0
+qa,validation,title,5036,0,0,0.0
+qa,validation,context,5036,0,0,0.0
+qa,validation,question,5036,0,0,0.0
+qa,validation,answers,5036,0,0,0.0
+qa,validation,split,5036,0,0,0.0
+qa,validation,source_row,5036,0,0,0.0
+qa,validation,row_key,5036,0,0,0.0
+qa,test,id,23936,0,0,0.0
+qa,test,title,23936,0,0,0.0
+qa,test,context,23936,0,0,0.0
+qa,test,question,23936,0,0,0.0
+qa,test,answers,23936,0,0,0.0
+qa,test,split,23936,0,0,0.0
+qa,test,source_row,23936,0,0,0.0
+qa,test,row_key,23936,0,0,0.0
+corpus,all,corpus_id,17474,0,0,0.0
+corpus,all,title,17474,0,17474,1.0
+corpus,all,context,17474,0,0,0.0
+corpus,all,processed_text,17474,0,0,0.0
+corpus,all,processed_title,17474,0,17474,1.0
+corpus,all,context_normalized_hash,17474,0,0,0.0
+corpus,all,context_hash,17474,0,0,0.0
+corpus,all,canonical_id,17474,0,0,0.0
+corpus,all,c_chars,17474,0,0,0.0
+corpus,all,c_words,17474,0,0,0.0
+corpus,all,c_unique_word_ratio,17474,0,0,0.0
+corpus,all,c_digit_ratio,17474,0,0,0.0
+corpus,all,c_cyrillic_ratio,17474,0,0,0.0
+corpus,all,c_sentences,17474,0,0,0.0
+corpus,all,c_e5_tokens,17474,0,0,0.0
+queries,all,query_id,74300,0,0,0.0
+queries,all,question,74300,0,0,0.0
+queries,all,processed_text,74300,0,0,0.0
+queries,all,title,74300,0,74300,1.0
+queries,all,processed_title,74300,0,74300,1.0
+qrels,train,query_id,45328,0,0,0.0
+qrels,train,corpus_id,45328,0,0,0.0
+qrels,train,score,45328,0,0,0.0
+qrels,train,split,45328,0,0,0.0
+qrels,validation,query_id,5036,0,0,0.0
+qrels,validation,corpus_id,5036,0,0,0.0
+qrels,validation,score,5036,0,0,0.0
+qrels,validation,split,5036,0,0,0.0
+qrels,test,query_id,23936,0,0,0.0
+qrels,test,corpus_id,23936,0,0,0.0
+qrels,test,score,23936,0,0,0.0
+qrels,test,split,23936,0,0,0.0
+qa_nested,train,answers.text (blank),45328,0,0,0.0
+qa_nested,train,answers.answer_start (negative),45328,0,3884,0.08568655135898341
+qa_nested,validation,answers.text (blank),5036,0,0,0.0
+qa_nested,validation,answers.answer_start (negative),5036,0,404,0.08022239872915012
+qa_nested,test,answers.text (blank),23936,0,23936,1.0
+qa_nested,test,answers.answer_start (negative),23936,0,23936,1.0

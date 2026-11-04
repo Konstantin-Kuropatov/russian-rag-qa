@@ -1,0 +1,128 @@
+{
+  "seed": 42,
+  "join_audit": {
+    "queries": 74300,
+    "corpus_rows": 17474,
+    "unique_exact_contexts": 13489,
+    "unique_normalized_contexts": 13487,
+    "qrels": 74300,
+    "qrels_score_values": [
+      1
+    ],
+    "unmapped_qa_rows": 0,
+    "ambiguous_identity_rows": 6,
+    "source_id_equals_query_id": 1
+  },
+  "overview": [
+    {
+      "split": "train",
+      "rows": 45328,
+      "unique_original_ids": 45328,
+      "contexts": 9078,
+      "labelled_rows": 45328,
+      "reader_eligible": 36917,
+      "median_question_words": 8.0,
+      "median_context_words": 91.0
+    },
+    {
+      "split": "validation",
+      "rows": 5036,
+      "unique_original_ids": 5036,
+      "contexts": 3971,
+      "labelled_rows": 5036,
+      "reader_eligible": 4144,
+      "median_question_words": 8.0,
+      "median_context_words": 90.5
+    },
+    {
+      "split": "test",
+      "rows": 23936,
+      "unique_original_ids": 23936,
+      "contexts": 4425,
+      "labelled_rows": 0,
+      "reader_eligible": 0,
+      "median_question_words": 8.0,
+      "median_context_words": 90.0
+    }
+  ],
+  "project_split": [
+    {
+      "project_split": "test",
+      "rows": 5009,
+      "contexts": 908,
+      "groups": 906,
+      "reader_eligible": 4067
+    },
+    {
+      "project_split": "train",
+      "rows": 40347,
+      "contexts": 7258,
+      "groups": 7246,
+      "reader_eligible": 32892
+    },
+    {
+      "project_split": "validation",
+      "rows": 5008,
+      "contexts": 911,
+      "groups": 906,
+      "reader_eligible": 4102
+    }
+  ],
+  "labelled_rows": 50364,
+  "unlabelled_rows": 23936,
+  "raw_negative_offsets_labelled": 4288,
+  "raw_exact_spans": 39019,
+  "unique_exact_relocations": 2267,
+  "reader_eligible_rows": 41061,
+  "span_boundary_violations": 225,
+  "pronoun_review_flags": 1654,
+  "full_context_answers": 0,
+  "near_full_context_answers": 1,
+  "source_id_collision_rows": 24,
+  "near_duplicate_candidate_pairs": 45,
+  "near_pairs_ge_097": 30,
+  "corpus_over_512_e5": 44,
+  "diagnostic": {
+    "scope": "fixed random sample of project validation only; project test never evaluated",
+    "seed": 42,
+    "n_questions": 1000,
+    "corpus_rows": 17474,
+    "indexed_text": "raw context only, no questions or answers",
+    "vectorizer": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "max_features": 100000,
+      "sublinear_tf": true
+    },
+    "recall_at_1_equivalent": 0.712,
+    "recall_at_5_equivalent": 0.828,
+    "recall_at_10_equivalent": 0.862,
+    "mrr_at_10_equivalent": 0.7605761904761905,
+    "recall_at_5_strict_id": 0.826,
+    "mrr_at_10_strict_id": 0.7219261904761906,
+    "recall_at_5_wilson_95": [
+      0.8033655734021719,
+      0.850123981125156
+    ],
+    "recall_at_5_cluster_bootstrap_95": [
+      0.8032033086846881,
+      0.8519294954040181
+    ],
+    "mrr_at_10_cluster_bootstrap_95": [
+      0.734704162173591,
+      0.7880476170113638
+    ],
+    "ci_note": "1000 bootstrap resamples of canonical passage clusters; this sample only",
+    "warnings": "gold passage labels are not exhaustive relevance judgments; this is not answer correctness"
+  },
+  "environment": {
+    "python": "3.12.12",
+    "pandas": "2.3.3",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "tokenizers": "0.23.3",
+    "razdel": "0.5.0"
+  }
+}

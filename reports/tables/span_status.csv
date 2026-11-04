@@ -1,0 +1,14 @@
+split,span_status,rows,fraction_within_split
+test,no_label,23936,1.0
+train,ambiguous_exact,153,0.0033753971055418283
+train,case_and_punctuation_mismatch,1718,0.03790151782562654
+train,case_or_unicode_mismatch,5192,0.11454288739851748
+train,exact,35091,0.774157253794564
+train,punctuation_or_space_mismatch,1140,0.025150017649135194
+train,relocated_exact,2034,0.044872926226614894
+validation,ambiguous_exact,9,0.0017871326449563146
+validation,case_and_punctuation_mismatch,180,0.035742652899126294
+validation,case_or_unicode_mismatch,552,0.1096108022239873
+validation,exact,3928,0.7799841143764893
+validation,punctuation_or_space_mismatch,134,0.02660841938046068
+validation,relocated_exact,233,0.04626687847498014
