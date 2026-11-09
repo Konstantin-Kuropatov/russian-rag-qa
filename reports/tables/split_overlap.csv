@@ -1,0 +1,16 @@
+left_split,right_split,key,shared_unique,left_rows_affected,right_rows_affected,right_fraction
+train,validation,id,0,0,0,0.0
+train,validation,context_hash,3971,18396,5036,1.0
+train,validation,context_normalized_hash,3971,18401,5036,1.0
+train,validation,question_normalized,6,6,6,0.0011914217633042098
+train,validation,pair_hash,1,1,1,0.00019857029388403494
+train,test,id,11,11,11,0.00045955882352941176
+train,test,context_hash,14,59,68,0.002840909090909091
+train,test,context_normalized_hash,14,59,68,0.002840909090909091
+train,test,question_normalized,12,12,12,0.000501336898395722
+train,test,pair_hash,1,1,1,4.177807486631016e-05
+validation,test,id,1,1,1,4.177807486631016e-05
+validation,test,context_hash,8,8,38,0.0015875668449197862
+validation,test,context_normalized_hash,8,8,38,0.0015875668449197862
+validation,test,question_normalized,1,1,1,4.177807486631016e-05
+validation,test,pair_hash,1,1,1,4.177807486631016e-05

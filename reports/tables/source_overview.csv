@@ -1,0 +1,4 @@
+split,rows,unique_original_ids,contexts,labelled_rows,reader_eligible,median_question_words,median_context_words
+train,45328,45328,9078,45328,36917,8.0,91.0
+validation,5036,5036,3971,5036,4144,8.0,90.5
+test,23936,23936,4425,0,0,8.0,90.0

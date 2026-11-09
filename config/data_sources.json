@@ -1,0 +1,32 @@
+{
+  "sources": [
+    {
+      "name": "qa",
+      "repo_id": "kuznetsoffandrey/sberquad",
+      "repo_type": "dataset",
+      "revision": "deb870ee29b280657470f2c3851e9b23899fdbc3",
+      "files": ["README.md", "sberquad/train-00000-of-00001.parquet", "sberquad/validation-00000-of-00001.parquet", "sberquad/test-00000-of-00001.parquet"]
+    },
+    {
+      "name": "retrieval",
+      "repo_id": "kaengreg/sberquad-retrieval",
+      "repo_type": "dataset",
+      "revision": "16f9539da18c86f2a5f91e369c8ca6c2add2075f",
+      "files": ["README.md", "corpus.jsonl", "queries.jsonl"]
+    },
+    {
+      "name": "qrels",
+      "repo_id": "kaengreg/sberquad-retrieval-qrels",
+      "repo_type": "dataset",
+      "revision": "ceac8190a0bddd2aee07d44cc65a01223b558d72",
+      "files": ["README.md", "train.tsv", "validation.tsv", "test.tsv"]
+    },
+    {
+      "name": "tokenizer",
+      "repo_id": "intfloat/multilingual-e5-small",
+      "repo_type": "model",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "files": ["README.md", "tokenizer.json", "tokenizer_config.json", "config.json"]
+    }
+  ]
+}

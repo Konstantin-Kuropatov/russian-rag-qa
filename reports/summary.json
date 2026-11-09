@@ -1,0 +1,93 @@
+{
+  "seed": 42,
+  "join_audit": {
+    "queries": 74300,
+    "corpus_rows": 17474,
+    "unique_exact_contexts": 13489,
+    "unique_normalized_contexts": 13487,
+    "qrels": 74300,
+    "qrels_score_values": [
+      1
+    ],
+    "unmapped_qa_rows": 0,
+    "ambiguous_identity_rows": 6,
+    "source_id_equals_query_id": 1
+  },
+  "overview": [
+    {
+      "split": "train",
+      "rows": 45328,
+      "unique_original_ids": 45328,
+      "contexts": 9078,
+      "labelled_rows": 45328,
+      "reader_eligible": 36917,
+      "median_question_words": 8.0,
+      "median_context_words": 91.0
+    },
+    {
+      "split": "validation",
+      "rows": 5036,
+      "unique_original_ids": 5036,
+      "contexts": 3971,
+      "labelled_rows": 5036,
+      "reader_eligible": 4144,
+      "median_question_words": 8.0,
+      "median_context_words": 90.5
+    },
+    {
+      "split": "test",
+      "rows": 23936,
+      "unique_original_ids": 23936,
+      "contexts": 4425,
+      "labelled_rows": 0,
+      "reader_eligible": 0,
+      "median_question_words": 8.0,
+      "median_context_words": 90.0
+    }
+  ],
+  "project_split": [
+    {
+      "project_split": "test",
+      "rows": 5009,
+      "contexts": 908,
+      "groups": 906,
+      "reader_eligible": 4067
+    },
+    {
+      "project_split": "train",
+      "rows": 40347,
+      "contexts": 7258,
+      "groups": 7246,
+      "reader_eligible": 32892
+    },
+    {
+      "project_split": "validation",
+      "rows": 5008,
+      "contexts": 911,
+      "groups": 906,
+      "reader_eligible": 4102
+    }
+  ],
+  "labelled_rows": 50364,
+  "unlabelled_rows": 23936,
+  "raw_negative_offsets_labelled": 4288,
+  "raw_exact_spans": 39019,
+  "unique_exact_relocations": 2267,
+  "reader_eligible_rows": 41061,
+  "span_boundary_violations": 225,
+  "pronoun_review_flags": 1654,
+  "full_context_answers": 0,
+  "near_full_context_answers": 1,
+  "source_id_collision_rows": 24,
+  "near_duplicate_candidate_pairs": 45,
+  "near_pairs_ge_097": 30,
+  "corpus_over_512_e5": 44,
+  "environment": {
+    "python": "3.12.12",
+    "pandas": "2.3.3",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "tokenizers": "0.23.3",
+    "razdel": "0.5.0"
+  }
+}

@@ -1,0 +1,2 @@
+# Generated tables preserve whitespace from the original dataset text.
+reports/tables/*.csv whitespace=-blank-at-eol

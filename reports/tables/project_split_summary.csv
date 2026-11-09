@@ -1,0 +1,4 @@
+project_split,rows,contexts,groups,reader_eligible
+test,5009,908,906,4067
+train,40347,7258,7246,32892
+validation,5008,911,906,4102

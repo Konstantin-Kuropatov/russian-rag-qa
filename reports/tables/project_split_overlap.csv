@@ -1,0 +1,10 @@
+left_split,right_split,key,shared_unique
+train,validation,context_normalized_hash,0
+train,validation,question_normalized,0
+train,validation,split_group,0
+train,test,context_normalized_hash,0
+train,test,question_normalized,0
+train,test,split_group,0
+validation,test,context_normalized_hash,0
+validation,test,question_normalized,0
+validation,test,split_group,0

@@ -1,0 +1,8 @@
+method,content_window,overlap,evaluated,answer_retained_fraction
+prefix_truncation,128,0,41061,0.7576045395874431
+prefix_truncation,256,0,41061,0.9824407588709481
+prefix_truncation,512,0,41061,0.9995372738121332
+all_token_windows,128,0,41061,0.9732592971432746
+all_token_windows,128,32,41061,0.9998538759406737
+all_token_windows,256,0,41061,0.9979299091595432
+all_token_windows,256,32,41061,0.9999512919802246
