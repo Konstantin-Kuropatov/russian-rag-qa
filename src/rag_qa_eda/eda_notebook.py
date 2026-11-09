@@ -155,6 +155,12 @@ display(
 )
 show_plot(plots.missingness(qa))
 display(
+    qa.loc[
+        qa.row_key.eq("test:0"),
+        ["row_key", "question", "answer_text", "label_available"],
+    ]
+)
+display(
     Markdown(
         f"У всех **{summary['unlabelled_rows']:,}** вопросов исходного test ответ пустой, "
         "позиция — −1. Эталоны не опубликованы, поэтому эти строки отмечены "
@@ -199,29 +205,29 @@ display(
 )
 
 # %% [markdown]
-# ## 5. Примеры проблем в разметке
+# ## 5. Явные дефекты эталонов
 #
-# Подборка составлена с помощью ассистента; комментарии пока не проверены
-# вручную. Примеры показывают виды проблем, но не их долю в датасете.
+# Ниже — оборванное начало ответа и почти весь абзац вместо числа.
+# Примеры отобраны с помощью ассистента; по ним не оценивается доля ошибок.
 
 # %%
 cases = pd.DataFrame(json.loads((ROOT / "config/illustrative_cases.json").read_text())["cases"])
 case_data = cases.merge(
-    qa[["row_key", "question", "answer_text", "span_status", "a_words"]],
+    qa[["row_key", "question", "answer_text"]],
     on="row_key",
     validate="one_to_one",
 )
 display(
     case_data.assign(answer_excerpt=case_data.answer_text.str.slice(0, 100))[
-        ["row_key", "question", "answer_excerpt", "issue", "span_status"]
+        ["row_key", "question", "answer_excerpt", "issue"]
     ]
 )
 for row in case_data.itertuples(index=False):
     display(Markdown(f"**{row.row_key}: {row.issue}.** {row.interpretation}"))
 
 # %% [markdown]
-# Проверка позиции не ловит все ошибки: ответ может быть неполным, а вопрос —
-# непонятным без соседнего текста. Такие случаи нужно проверять по смыслу отдельно.
+# Исходные эталоны сохранены без перезаписи. Возможные исправления требуют
+# отдельной проверки и учёта изменений в разметке.
 
 # %% [markdown]
 # ## 6. Длины и выбросы
