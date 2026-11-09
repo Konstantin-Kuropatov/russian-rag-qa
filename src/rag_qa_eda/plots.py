@@ -333,44 +333,6 @@ def lexical_and_position(qa: pd.DataFrame):
     return save_figure(fig, "10_lexical_overlap_and_position")
 
 
-def retrieval_diagnostic(summary: dict):
-    p = summary["diagnostic"]
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.2), layout="constrained")
-    values = [
-        p["recall_at_5_strict_id"],
-        p["recall_at_5_equivalent"],
-        p["mrr_at_10_strict_id"],
-        p["mrr_at_10_equivalent"],
-    ]
-    axes[0].barh(
-        [
-            "Recall@5 · строгий ID",
-            "Recall@5 · эквивалентные тексты",
-            "MRR@10 · строгий ID",
-            "MRR@10 · эквивалентные тексты",
-        ],
-        values,
-        color=[COLORS[2], COLORS[0], COLORS[2], COLORS[0]],
-    )
-    axes[0].invert_yaxis()
-    for i, value in enumerate(values):
-        axes[0].text(value + 0.012, i, f"{value:.3f}", va="center")
-    axes[0].set(xlim=(0, 1), title="Одно ранжирование · разные правила проверки", xlabel="Метрика")
-    table = pd.read_csv(TABLES / "retrieval_by_lexical_coverage.csv")
-    axes[1].bar(table.coverage_bin, table.recall_at_5, color=COLORS[1])
-    for i, row in table.iterrows():
-        if pd.notna(row.recall_at_5):
-            axes[1].text(i, row.recall_at_5 + 0.025, f"n={row.questions}", ha="center", fontsize=9)
-    axes[1].set(
-        ylim=(0, 1.12),
-        title="Связь лексического покрытия с поиском",
-        xlabel="Покрытие вопроса словами контекста",
-        ylabel="Recall@5",
-    )
-    axes[1].tick_params(axis="x", labelsize=8)
-    return save_figure(fig, "11_retrieval_diagnostic")
-
-
 def frequent_terms():
     fig, axes = plt.subplots(1, 2, figsize=(12, 6), layout="constrained")
     for ax, field, title, color in zip(
@@ -381,7 +343,7 @@ def frequent_terms():
         ax.invert_yaxis()
         ax.set(title=title, xlabel="Документов, где встречается слово")
     fig.suptitle("Частые содержательные слова · без лемматизации")
-    return save_figure(fig, "12_frequent_terms")
+    return save_figure(fig, "11_frequent_terms")
 
 
 def answer_forms_and_question_counts():
@@ -403,4 +365,4 @@ def answer_forms_and_question_counts():
         xlabel="Вопросов к уникальному размеченному контексту",
         ylabel="Контекстов",
     )
-    return save_figure(fig, "13_answer_forms_and_group_sizes")
+    return save_figure(fig, "12_answer_forms_and_group_sizes")

@@ -68,8 +68,8 @@ def make_project_split(qa: pd.DataFrame, near: pd.DataFrame, seed: int = 42) -> 
     """Group normalized passages, repeated questions and >=.97 near candidates.
 
     The source test has no reference answers and is never converted into negative
-    examples. A new project test is carved out of the labelled pool and is not
-    used in the diagnostic retrieval experiment.
+    examples. A new project test is carved out of the labelled pool for the
+    final evaluation, separately from model selection on project validation.
     """
     labelled = qa.loc[qa.label_available].copy()
     ids = sorted(labelled.canonical_id.unique())

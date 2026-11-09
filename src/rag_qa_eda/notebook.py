@@ -17,8 +17,9 @@ LOGGER = logging.getLogger(__name__)
 
 
 def execute_notebook() -> None:
-    source = ROOT / "notebooks/01_sberquad_eda.py"
-    destination = source.with_suffix(".ipynb")
+    source = ROOT / "src/rag_qa_eda/eda_notebook.py"
+    destination = ROOT / "notebooks/eda.ipynb"
+    destination.parent.mkdir(parents=True, exist_ok=True)
     notebook = jupytext.read(source)
     for index, cell in enumerate(notebook.cells):
         cell.id = hashlib.sha256(f"{index}:{cell.source}".encode()).hexdigest()[:12]
@@ -55,7 +56,6 @@ def execute_notebook() -> None:
         "pairplot": "Парные распределения логарифмов длин и лексического покрытия на 1500 размеченных строках.",
         "token_budgets": "Длины входов tokenizer E5 и сохранность эталонного span при обрезке и нарезке на окна.",
         "lexical_and_position": "Распределения лексического покрытия, Jaccard и относительного положения ответа.",
-        "retrieval_diagnostic": "Метрики фиксированного поиска с учётом эквивалентных ID и по группам лексического покрытия.",
         "frequent_terms": "Document frequency частых слов после ограниченной стоп-листовой фильтрации.",
         "answer_forms_and_question_counts": "Частоты поверхностных форм ответа и число вопросов на уникальный контекст.",
     }
@@ -80,5 +80,5 @@ def execute_notebook() -> None:
     exporter = HTMLExporter(template_name="lab", raw_template=html_template)
     exporter.embed_images = True
     html, _ = exporter.from_notebook_node(notebook)
-    (REPORTS / "01_sberquad_eda.html").write_text(html, encoding="utf-8")
+    (REPORTS / "eda.html").write_text(html, encoding="utf-8")
     LOGGER.info("Saved executed notebook and self-contained HTML")

@@ -11,7 +11,6 @@ import pandas as pd
 from scipy.stats import ks_2samp
 
 from .data import SPLITS, flatten_labels, join_retrieval, load_sources
-from .diagnostics import retrieval_probe
 from .download import verify_raw_files
 from .features import add_features
 from .paths import PROCESSED, REPORTS, TABLES
@@ -86,7 +85,6 @@ def make_tables(
     qrels: pd.DataFrame,
     raw_qa: pd.DataFrame,
     near: pd.DataFrame,
-    probe: pd.DataFrame,
 ) -> dict:
     labelled = qa.loc[qa.label_available].copy()
     overview = (
@@ -312,31 +310,6 @@ def make_tables(
                 }
             )
     save_table("project_split_overlap", pd.DataFrame(project_overlap))
-    save_table("retrieval_probe", probe)
-    probe = probe.copy()
-    probe["coverage_bin"] = pd.cut(
-        probe.q_context_coverage, [-0.001, 0.25, 0.5, 0.75, 1], include_lowest=True
-    )
-    stratified = (
-        probe.groupby("coverage_bin", observed=False)
-        .agg(
-            questions=("row_key", "size"),
-            recall_at_5=("recall_at_5", "mean"),
-            mrr_at_10=("reciprocal_rank_at_10", "mean"),
-        )
-        .reset_index()
-    )
-    save_table("retrieval_by_lexical_coverage", stratified)
-    save_table(
-        "retrieval_by_question_type",
-        probe.groupby("question_type")
-        .agg(
-            questions=("row_key", "size"),
-            recall_at_5=("recall_at_5", "mean"),
-            mrr_at_10=("reciprocal_rank_at_10", "mean"),
-        )
-        .reset_index(),
-    )
     make_review_sample(labelled).to_csv(PROCESSED / "review_sample.csv", index=False)
     return {"overview": overview.to_dict("records"), "project_split": project.to_dict("records")}
 
@@ -387,9 +360,7 @@ def run_analysis() -> dict:
     qa["retrieval_train_eligible"] = (
         qa.label_available & qa.question.str.strip().ne("") & qa.context.str.strip().ne("")
     )
-    LOGGER.info("Running fixed TF-IDF diagnostic on project validation (no test evaluation)")
-    probe, probe_summary = retrieval_probe(qa, corpus)
-    statistics = make_tables(qa, corpus, queries, qrels, raw_qa, near, probe)
+    statistics = make_tables(qa, corpus, queries, qrels, raw_qa, near)
     qa.to_parquet(PROCESSED / "qa_features.parquet", index=False)
     corpus.to_parquet(PROCESSED / "corpus_features.parquet", index=False)
     corpus.drop_duplicates("canonical_id").sort_values("canonical_id").to_parquet(
@@ -433,7 +404,6 @@ def run_analysis() -> dict:
         "near_duplicate_candidate_pairs": len(near),
         "near_pairs_ge_097": int(near.char_cosine.ge(0.97).sum()),
         "corpus_over_512_e5": int(corpus.drop_duplicates("canonical_id").c_e5_tokens.gt(512).sum()),
-        "diagnostic": probe_summary,
         "environment": {
             "python": platform.python_version(),
             **{

@@ -3,7 +3,7 @@
 import pandas as pd
 import pytest
 
-from rag_qa_eda.paths import PROCESSED, TABLES
+from rag_qa_eda.paths import PROCESSED
 
 pytestmark = pytest.mark.skipif(
     not (PROCESSED / "qa_features.parquet").exists(),
@@ -38,14 +38,12 @@ def test_unpublished_labels_stay_unknown(qa_snapshot):
     assert source_test.project_split.eq("unlabeled_source_test").all()
 
 
-def test_project_partitions_are_disjoint_and_probe_excludes_test(qa_snapshot):
+def test_project_partitions_are_disjoint(qa_snapshot):
     labelled = qa_snapshot.loc[qa_snapshot.label_available]
     assert labelled.groupby("context_normalized_hash").project_split.nunique().max() == 1
     assert labelled.groupby("question_normalized").project_split.nunique().max() == 1
-    probe = pd.read_csv(TABLES / "retrieval_probe.csv")
-    evaluated = labelled.set_index("row_key").loc[probe.row_key]
-    assert evaluated.project_split.eq("validation").all()
-    assert len(probe) == len(probe.row_key.unique())
+    assert labelled.groupby("split_group").project_split.nunique().max() == 1
+    assert set(labelled.project_split) == {"train", "validation", "test"}
 
 
 def test_original_id_collisions_are_resolved_with_unique_row_keys(qa_snapshot):
